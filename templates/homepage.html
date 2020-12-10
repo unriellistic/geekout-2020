@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<head>
+    <link href='{{url_for("static",filename = "style.css") }}' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+</head>
+
+<body>
+    <header class="navbar">
+        <section class="navbar-section">
+            <a href="#" class="navbar-brand mr-2" style="padding:16px;">HoardGoWhere</a>
+            <a href="#" class="btn btn-link">Page 1</a>
+            <a href="#" class="btn btn-link">Page 2</a>
+        </section>
+    </header>
+    <div id="myDIV" class="header">
+        <h2>List of items to donate</h2>
+    </div>
+
+    <ul id="myUL">
+       {% for i in data %}
+            <li>
+                {{i[0]}}
+                <p></p>
+                <p>Location: {{i[1]}}</p>
+                <p>Stocks: {{i[2]}}</p>
+            </li>
+       {% endfor %}
+    </ul>
+</body>
