@@ -50,3 +50,13 @@ class LoginForm(FlaskForm):
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/homepage')
+def home():
+    data = [['Toilet Rolls','Jurong East Ave 5 Blk 121',130],['Maggie Mee','Whampoa Street 2 Blk 212',140],['Hand Sanitiser','Singap Street 130','2 px']]
+
+    return render_template('homepage.html',data = data)
+
+
+if __name__ == '__main__':
+    app.run()

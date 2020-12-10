@@ -17,7 +17,7 @@
     background: #eee;
     font-size: 18px;
     transition: 0.2s;
-  
+    width: 600px;
     /* make the list items unselectable */
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -74,7 +74,7 @@
     background-color: #f44336;
     padding: 30px 40px;
     color: white;
-    text-align: center;
+    width: 600px;
   }
   
   /* Clear floats after the header */
@@ -96,19 +96,26 @@
   }
   
   /* Style the "Add" button */
-  .addBtn {
-    padding: 10px;
-    width: 25%;
-    background: #d9d9d9;
-    color: #555;
-    float: left;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.3s;
-    border-radius: 0;
-  }
   
-  .addBtn:hover {
-    background-color: #bbb;
-  }
+#sidebar {
+	display: table-cell;
+	width: 45%;
+    vertical-align: top;
+    float: right;
+}
+
+#content {
+	display: table-cell;
+	width: 55%;
+	vertical-align: top;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	height: 100%;
+}
+
