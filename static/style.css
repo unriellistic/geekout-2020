@@ -19,6 +19,7 @@
     font-size: 18px;
     transition: 0.2s;
     width: 600px;
+    list-style-type: none;
     /* make the list items unselectable */
     -webkit-user-select: none;
     -moz-user-select: none;

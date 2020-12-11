@@ -141,13 +141,10 @@ p{
 </header>
 <div id="myDIV" class="header">
   <h2 style="margin:5px">Donated Goods</h2>
-  <form method = 'POST' >
-  <input type="text" name = 'name' id="myItem" placeholder="Enter Item...">
-  <input type="text" name = 'loc' id="NearestCC" placeholder="Enter Nearest CC...">
-  <input type="text" name = 'qty' id="Stocks" placeholder="Enter Quantity...">
-  <input type= "submit" onclick="newElement()" class="addBtn">
-  </form>
-  
+  <input type="text" id="myItem" placeholder="Enter Item...">
+  <input type="text" id="NearestCC" placeholder="Enter Nearest CC...">
+  <input type="text" id="Stocks" placeholder="Enter Quantity...">
+  <span onclick="newElement()" class="addBtn">Add</span>
 </div>
 
 <ul id="myUL">
@@ -212,6 +209,9 @@ function newElement() {
 
       }
     
+
+  document.getElementById("myItem").value = "";
+  document.getElementById("Stocks").value ='';
   
 
   var span = document.createElement("SPAN");

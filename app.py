@@ -74,29 +74,7 @@ def home():
 
 @app.route('/donate', methods = ['GET','POST'])
 def don_page():
-    if request.method == 'POST':
-        lat,long = [1.3555383466194264, 103.93487934565096] #Tampines CC lat long
-        qty = request.form['qty'] 
-        
-        name = request.form['name']
-        loc = request.form['loc']
-        print(loc,name,qty,loc.endswith(' CC'),qty.isalpha())
-        if qty == '' or loc == '' or name == '' or qty.isalpha() or not loc.endswith(' CC'):
-            print('Invalid data')
-        else:
-            with sqlite3.connect('emergency.db' ) as conn:
-                cursor = conn.execute('SELECT * FROM Donations WHERE ItemName = ? AND Location = ?',(name,loc))
-                data = cursor.fetchall()
-                if data != []:
-                    curstock = data[3]
-                    newstock = curstock+qty
-                    conn.execute('UPDATE Donations SET Stock = ? WHERE ItemName = ? AND Location = ?',(newstock,name,loc))
-                
-                conn.execute('INSERT INTO Donations(ItemName, Location, Stock, Latitude, Longitude) VALUES(?,?,?,?,?)',(name,loc,qty,lat,long))
-                conn.commit()
-        return render_template('uploadpage.html')
-    else:
-        return render_template('uploadpage.html')
+    return render_template('uploadpage.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
