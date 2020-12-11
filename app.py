@@ -57,6 +57,14 @@ def home():
 
     return render_template('homepage.html',data = data)
 
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    form = SignupForm()
+    return "Signup Page (Todo)"
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    return "Login Page (Todo)"
 
 if __name__ == '__main__':
     app.run()
