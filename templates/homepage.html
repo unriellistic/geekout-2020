@@ -25,8 +25,12 @@
     <header class="navbar">
         <section class="navbar-section">
             <a href="#" class="navbar-brand mr-2" style="padding:16px;">ItemGoWhere</a>
-            <a class = "btn btn-link">Getting Donations</p>
+            <a href="{{ url_for('home') }}" class="btn btn-link">Getting Donations</p>
             <a href="{{ url_for('don_page') }}" class="btn btn-link">Offering Donations</a>
+        </section>
+        <section class="navbar-section">
+            <a href="{{ url_for('signup') }}" class="btn btn-link">Sign Up</a>
+            <a href="{{ url_for('login') }}" class="btn btn-link">Log In</a>
         </section>
     </header>
     <div id="outer-container">

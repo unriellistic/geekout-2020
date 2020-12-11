@@ -11,6 +11,10 @@
 			<a href= "{{ url_for('home') }}" class="btn btn-link">Getting Donations</a>
 			<a href="{{ url_for('don_page') }}" class="btn btn-link">Offering Donations</a>
 		</section>
+		<section class="navbar-section">
+		    <a href="{{ url_for('signup') }}" class="btn btn-link">Sign Up</a>
+		    <a href="{{ url_for('login') }}" class="btn btn-link">Log In</a>
+		</section>
 	</header>
 	<section class="container">
 		{% block content %}{% endblock %}
