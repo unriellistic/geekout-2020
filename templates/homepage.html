@@ -33,17 +33,28 @@
         <div id="sidebar">
             <div id="myDIV" class="header">
                 <h2>List of items to donate</h2>
+                <form method = 'POST'>
+                <input name= 'item' placeholder = 'Search for item...'>
+                </form>
+                
             </div>
 
             <ul id="myUL">
+                {%if data | length != 0 %}
                 {% for i in data %}
                 <li>
-                    {{i[0]}}
+                    {{i[1]}}
                     <p></p>
-                    <p>Location: {{i[1]}}</p>
-                    <p>Stocks: {{i[2]}}</p>
+                    <p>Location: {{i[2]}}</p>
+                    <p>Stocks: {{i[3]}}</p>
                 </li>
                 {% endfor %}
+                {% else %}
+                <li>
+                <p>Nothing To Be Shown :(<p>
+                </li>
+                {% endif %}
+
             </ul>
         </div>
         <div id="content">
@@ -51,7 +62,7 @@
             <script>
 
                 var mymap = L.map('mapid').setView([1.352083, 103.819836], 11);
-
+                var data = {{data | tojson}}
                 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                     maxZoom: 18,
                     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
@@ -60,12 +71,9 @@
                     tileSize: 512,
                     zoomOffset: -1
                 }).addTo(mymap);
-
-                var cck = new L.Marker([1.381399661851726, 103.75153659730755]).bindPopup('Toilet Paper<br/>Stocks: 130<br/>Maggie Mee<br/>Stocks: 200<br/>Location: Choa Chu Kang CC',{closeOnClick: false, autoClose: false}).openPopup()
-                var jurong = new L.Marker([1.3492001784015455, 103.7180304932552]).bindPopup('Hand Sanitiser<br/>Stocks: 20<br/>Jurong Spring CC',{closeOnClick: false, autoClose: false}).openPopup()
-               jurong.addTo(mymap);
-              
-               cck.addTo(mymap);
+                for (let i = 0;i<data.length;i++){
+                    let mark = new L.Marker([data[i][4],data[i][5]]).bindPopup(`Item: ${data[i][1]}<br/>Stocks: ${data[i][2]}<br/>Location: ${data[i][3]}`).addTo(mymap);
+                }
             </script>
 
 

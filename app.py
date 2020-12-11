@@ -1,10 +1,11 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for,request
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Email, EqualTo, Length
 from werkzeug.security import generate_password_hash, check_password_hash
+import sqlite3
 
 # general flask app setup
 app = Flask(__name__)
@@ -51,10 +52,26 @@ class LoginForm(FlaskForm):
 def index():
     return render_template('index.html')
 
-@app.route('/homepage')
+@app.route('/homepage',methods= ['GET','POST'])
 def home():
-    data = [['Toilet Rolls','Choa Chu Kang CC',130,1.3414251396568244, 103.74075459727348],['Maggie Mee','Choa Chu Kang CC',200],['Hand Sanitiser','Jurong Spring CC',20]]
+    if request.method == 'POST':
+        query = request.form['item']
 
+        with sqlite3.connect('emergency.db' ) as conn:
+            if query == '':
+                cursor = conn.execute('SELECT * FROM Donations')
+            else:
+                query+='%'
+                cursor = conn.execute('SELECT * FROM Donations WHERE ItemName LIKE ?',(query,))
+            data = cursor.fetchall()
+        if data == '':
+            data = 'Nothing'
+        return render_template('homepage.html',data = data)
+
+
+    with sqlite3.connect('emergency.db' ) as conn:
+        cursor = conn.execute('SELECT * FROM Donations')
+        data = cursor.fetchall()
     return render_template('homepage.html',data = data)
 
 @app.route('/donate')
