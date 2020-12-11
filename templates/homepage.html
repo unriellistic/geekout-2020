@@ -25,8 +25,8 @@
     <header class="navbar">
         <section class="navbar-section">
             <a href="#" class="navbar-brand mr-2" style="padding:16px;">ItemGoWhere</a>
-            <a href="#" class="btn btn-link">Page 1</a>
-            <a href="#" class="btn btn-link">Page 2</a>
+            <a class = "btn btn-link">Getting Donations</p>
+            <a href="{{ url_for('don_page') }}" class="btn btn-link">Offering Donations</a>
         </section>
     </header>
     <div id="outer-container">
@@ -61,11 +61,11 @@
                     zoomOffset: -1
                 }).addTo(mymap);
 
-                var jurong = new L.Marker([1.3414251396568244, 103.74075459727348]).bindPopup('Toilet Paper<br/>Stocks: 130<br/>Location:Jurong East Ave 5 Blk 121',{closeOnClick: false, autoClose: false}).openPopup()
-                var first = new L.Marker([1.3129226341821683, 103.92353366040076]).bindPopup('Hand Sanitiser<br/>Stocks: 2<br/>2 First Street',{closeOnClick: false, autoClose: false}).openPopup()
+                var cck = new L.Marker([1.381399661851726, 103.75153659730755]).bindPopup('Toilet Paper<br/>Stocks: 130<br/>Maggie Mee<br/>Stocks: 200<br/>Location: Choa Chu Kang CC',{closeOnClick: false, autoClose: false}).openPopup()
+                var jurong = new L.Marker([1.3492001784015455, 103.7180304932552]).bindPopup('Hand Sanitiser<br/>Stocks: 20<br/>Jurong Spring CC',{closeOnClick: false, autoClose: false}).openPopup()
                jurong.addTo(mymap);
-               whampoa.addTo(mymap);
-               first.addTo(mymap);
+              
+               cck.addTo(mymap);
             </script>
 
 

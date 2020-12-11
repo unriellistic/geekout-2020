@@ -2,6 +2,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
 <style>
 body {
   margin: 0;
@@ -120,13 +122,23 @@ input {
   border-radius: 0;
 }
 
+p{
+  display: inline;
+}
+
 .addBtn:hover {
   background-color: #bbb;
 }
 </style>
 </head>
 <body>
-
+<header class="navbar">
+        <section class="navbar-section">
+            <a href="#" class="navbar-brand mr-2" style="padding:16px;">ItemGoWhere</a>
+            <a href="{{ url_for('home') }}" class="btn btn-link">Getting Donations</a>
+            <a class = "btn btn-link">Offering Donations</a>
+        </section>
+</header>
 <div id="myDIV" class="header">
   <h2 style="margin:5px">Donated Goods</h2>
   <input type="text" id="myItem" placeholder="Enter Item...">
