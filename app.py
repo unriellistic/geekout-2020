@@ -65,8 +65,6 @@ def home():
                 query+='%'
                 cursor = conn.execute('SELECT * FROM Donations WHERE ItemName LIKE ?',(query,))
             data = cursor.fetchall()
-        if data == '':
-            data = 'Nothing'
         return render_template('homepage.html',data = data)
 
 
@@ -75,8 +73,7 @@ def home():
         data = cursor.fetchall()
     return render_template('homepage.html',data = data)
 
-
-@app.route('/donate')
+@app.route('/donate', methods = ['GET','POST'])
 def don_page():
     return render_template('uploadpage.html')
 
