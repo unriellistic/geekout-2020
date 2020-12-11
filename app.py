@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for,request
+from flask import Flask, render_template, url_for, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin
 from flask_wtf import FlaskForm
@@ -51,7 +51,7 @@ class LoginForm(FlaskForm):
 # loading pages
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return redirect(url_for('home'))
 
 @app.route('/homepage',methods= ['GET','POST'])
 def home():
