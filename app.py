@@ -10,6 +10,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db' # change this URI as required
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.secret_key = b'ttRh9-mZp%-&r9/'
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 
@@ -38,7 +39,7 @@ class SignupForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[Email(message="Please enter a valid email."), DataRequired()])
     password = PasswordField('Password', validators=[DataRequired(), Length(min=8, message="Please choose a longer password.")])
-    confirm_password = PasswordField('Confirm password', validators=[DataRequired(), EqualTo('password', message="Passwords must match.")])
+    confirm = PasswordField('Confirm password', validators=[DataRequired(), EqualTo('password', message="Passwords must match.")])
     submit = SubmitField("Sign Up")
 
 class LoginForm(FlaskForm):
@@ -60,11 +61,12 @@ def home():
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = SignupForm()
-    return "Signup Page (Todo)"
+    return render_template('signup.html', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    return "Login Page (Todo)"
+    form = LoginForm()
+    return render_template('login.html', form=form)
 
 if __name__ == '__main__':
     app.run()
