@@ -162,6 +162,10 @@ for (i = 0; i < close.length; i++) {
 
 // Add a "checked" symbol when clicking on a list item
 
+const capitalize = (s) => {
+  if (typeof s !== 'string') return ''
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}
 
 // Create a new list item when clicking on the "Add" button
 function newElement() {
@@ -169,8 +173,8 @@ function newElement() {
   var itemValue = document.getElementById("myItem").value;
   var loc = document.getElementById("NearestCC").value;
   var stonks  = document.getElementById("Stocks").value;
-  var item = document.createTextNode(`Item: ${itemValue}`);
-  var location = document.createTextNode(`Location: ${loc}`);
+  var item = document.createTextNode(`Item: ${capitalize(itemValue)}`);
+  var location = document.createTextNode(`Location: ${capitalize(loc)}`);
   var qty = document.createTextNode(`Stocks: ${stonks}`);
   var inputNodes = [item,location,qty]
   for (let i =0;i<inputNodes.length;i++){
@@ -179,7 +183,7 @@ function newElement() {
   }
  
   if (itemValue === '' || loc === '' || stonks === '') {
-    alert("You must write something.");
+    alert("You must write something in all three fields.");
   } 
   else{
       var regExp = /[a-zA-Z]/g;
@@ -187,13 +191,13 @@ function newElement() {
           alert("Quantity should not contain alphabetic characters.")
       }
 
-      else {
+           else {
     document.getElementById("myUL").appendChild(li);
   }
 
-  }
+      }
+    
 
-  
   document.getElementById("myItem").value = "";
   document.getElementById("Stocks").value ='';
   
