@@ -57,6 +57,9 @@ def home():
 
     return render_template('homepage.html',data = data)
 
+@app.route('/donate')
+def don_page():
+    return render_template('uploadpage.html')
 
 if __name__ == '__main__':
     app.run()
