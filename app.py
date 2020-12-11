@@ -53,7 +53,7 @@ def index():
 
 @app.route('/homepage')
 def home():
-    data = [['Toilet Rolls','Jurong East Ave 5 Blk 121',130],['Maggie Mee','Whampoa Street 2 Blk 212',140],['Hand Sanitiser','Singap Street 130','2 px']]
+    data = [['Toilet Rolls','Jurong East Ave 5 Blk 121',130,1.3414251396568244, 103.74075459727348],['Maggie Mee','Whampoa Street 2 Blk 212',140,1.3225507659356324, 103.85295076843762],['Hand Sanitiser','2 First Street',20,1.3129226341821683, 103.92353366040076]]
 
     return render_template('homepage.html',data = data)
 

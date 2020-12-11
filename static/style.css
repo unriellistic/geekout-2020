@@ -72,9 +72,9 @@
   /* Style the header */
   .header {
     background-color: #f44336;
-    padding: 30px 40px;
     color: white;
     width: 600px;
+    padding: 12px 8px 12px 40px;
   }
   
   /* Clear floats after the header */

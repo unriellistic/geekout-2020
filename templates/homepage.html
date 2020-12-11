@@ -47,10 +47,10 @@
             </ul>
         </div>
         <div id="content">
-            <div id="mapid" style="width: 600px; height: 400px; margin: fit-content;"></div>
+            <div id="mapid" style="width: 700px; height: 500px; margin: fit-content;"></div>
             <script>
 
-                var mymap = L.map('mapid').setView([1.352083, 103.819836], 13);
+                var mymap = L.map('mapid').setView([1.352083, 103.819836], 11);
 
                 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
                     maxZoom: 18,
@@ -61,6 +61,12 @@
                     zoomOffset: -1
                 }).addTo(mymap);
 
+                var jurong = new L.Marker([1.3414251396568244, 103.74075459727348]).bindPopup('Toilet Paper<br/>Stocks: 130<br/>Location:Jurong East Ave 5 Blk 121',{closeOnClick: false, autoClose: false}).openPopup()
+                var whampoa = new L.Marker([1.3225507659356324, 103.85295076843762]).bindPopup('Maggie Mee<br/>Stocks: 140<br/>Location:Whampoa Street 2 Blk 212',{closeOnClick: false, autoClose: false}).openPopup()
+                var first = new L.Marker([1.3129226341821683, 103.92353366040076]).bindPopup('Hand Sanitiser<br/>Stocks: 2<br/>2 First Street',{closeOnClick: false, autoClose: false}).openPopup()
+               jurong.addTo(mymap);
+               whampoa.addTo(mymap);
+               first.addTo(mymap);
             </script>
 
 
